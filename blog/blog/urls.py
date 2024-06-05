@@ -23,22 +23,24 @@ django.setup()
 
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 #1.导入系统的 logging
 import logging
-#创建（获取）日志器
-logger=logging.getLogger('django')
-
-from django.http import HttpResponse
-def log(request):
-    # 3.使用日志器记录信息
-    logger.info('info')
-    return HttpResponse('test')
+# #创建（获取）日志器
+# logger=logging.getLogger('django')
+#
+# from django.http import HttpResponse
+# def log(request):
+#     # 3.使用日志器记录信息
+#     logger.info('info')
+#     return HttpResponse('test')
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',log),
+    #include 的参数中设计一个元组
+    path('',include(('users.urls', 'users'), namespace='users'))
+   # path('',log),
 ]
