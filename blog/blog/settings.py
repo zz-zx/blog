@@ -196,3 +196,6 @@ LOGGING = {
         },
     }
 }
+#替换系统的User 来使用我们自己 定义的User
+#配置信息为‘子应用名.模型类型’
+AUTH_USER_MODEL = 'users.User'
